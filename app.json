@@ -11,9 +11,13 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "expo": {
+      "splash": {
+        "image": "./assets/splash.png",
+        "backgroundColor": "#FEF9B0"
+      }
+    },
     "ios": {
       "supportsTablet": true
     },
