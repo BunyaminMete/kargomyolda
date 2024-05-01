@@ -9,6 +9,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.5.17",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@react-navigation/stack": "^6.3.29",
@@ -19,7 +20,8 @@
     "react-native-gesture-handler": "~2.14.0",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
-    "react-native-svg-uri": "^1.2.3"
+    "react-native-svg-uri": "^1.2.3",
+    "expo-checkbox": "~2.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
