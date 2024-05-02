@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     height: 10,
     marginTop: 16,
   },
+  seperator: {
+    marginTop: 20,
+  },
 });
 
 const UserLoginScreen = () => {
@@ -63,11 +66,10 @@ const UserLoginScreen = () => {
           style={{
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: "blue",
           }}
         >
           {/* Input Kapsayıcısı */}
-          <View style={{ backgroundColor: "red" }}>
+          <View>
             <InputComponent placeholder="E-posta" />
             <InputComponent placeholder="Parola" uzaklik_ayarla={-10} />
             <CheckBoxComponent
@@ -82,7 +84,11 @@ const UserLoginScreen = () => {
               buttonStyle={{ backgroundColor: "#2AA2E6", marginTop: 40 }}
               buttonText="Giriş Yap"
             />
-            <Image source={seperatorLogin}></Image>
+            <Image style={styles.seperator} source={seperatorLogin}></Image>
+            <SetButton
+              buttonStyle={{ backgroundColor: "#38BF22", marginTop: 40 }}
+              buttonText="Kayıt Ol"
+            />
           </View>
         </View>
       </View>
