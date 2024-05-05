@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 import Checkbox from "expo-checkbox";
 
@@ -8,6 +8,8 @@ const CheckBoxComponent = ({
   onValueChange,
   color,
   checkboxText,
+  underlinedText,
+  onPress,
 }) => {
   return (
     <>
@@ -18,7 +20,10 @@ const CheckBoxComponent = ({
           onValueChange={onValueChange}
           color={color}
         />
-        <Text style={styles.checkboxText}>{checkboxText}</Text>
+        <TouchableOpacity onPress={onPress}>
+          <Text style={styles.belgeLink}>{underlinedText}</Text>
+        </TouchableOpacity>
+        <Text style={{ marginLeft: "2%" }}>{checkboxText}</Text>
       </View>
     </>
   );
@@ -29,8 +34,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  checkboxText: {
-    marginLeft: "2%",
+  belgeLink: {
+    color: "#2AA2E6",
+    textDecorationLine: "underline",
+    marginLeft: 5,
   },
 });
 export default CheckBoxComponent;

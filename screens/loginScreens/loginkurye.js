@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet, TextInput } from "react-native";
-import Checkbox from "expo-checkbox";
 
-import HeaderArea from "../components/header";
+import HeaderArea from "../../components/header";
 
-import AppLogo from "../assets/kargoMaviLogo.png";
-import KargomYoldaText from "../assets/kargomyoldaText_Siyah.png";
-import EllipseHighlight from "../assets/ellipse_gri.png";
-import InputComponent from "../components/input";
-import CheckBoxComponent from "../components/checkbox";
-import SetButton from "../components/button";
+import AppLogo from "../../assets/kargoMaviLogo.png";
+import KargomYoldaText from "../../assets/kargomyoldaText_Siyah.png";
+import EllipseHighlight from "../../assets/ellipse_gri.png";
+import InputComponent from "../../components/input";
+import CheckBoxComponent from "../../components/checkbox";
+import SetButton from "../../components/button";
 
-import seperatorLogin from "../assets/hesabinyokmu.png";
+import seperatorLogin from "../../assets/hesabinyokmu.png";
 
 const styles = StyleSheet.create({
   container: {
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const UserLoginScreen = () => {
+const KuryeLoginScreen = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
 
   return (
@@ -88,6 +87,7 @@ const UserLoginScreen = () => {
             <SetButton
               buttonStyle={{ backgroundColor: "#38BF22", marginTop: 40 }}
               buttonText="Kayıt Ol"
+              onPress={() => navigation.navigate("RegisterKurye")}
             />
           </View>
         </View>
@@ -96,4 +96,4 @@ const UserLoginScreen = () => {
   );
 };
 
-export default UserLoginScreen;
+export default KuryeLoginScreen;

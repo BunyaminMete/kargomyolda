@@ -1,11 +1,14 @@
 import react from "react";
 import { View, TextInput, StyleSheet } from "react-native";
 
+const defaultWidth = 360;
+
 const InputComponent = ({
   placeholder,
   value,
   onChangeUpdateText,
   uzaklik_ayarla,
+  width = defaultWidth,
 }) => {
   return (
     <>
@@ -17,7 +20,7 @@ const InputComponent = ({
         }}
       >
         <TextInput
-          style={styles.input}
+          style={[styles.input, { width: width }]}
           placeholder={placeholder}
           value={value}
           onChangeText={onChangeUpdateText}
@@ -30,7 +33,6 @@ const InputComponent = ({
 const styles = StyleSheet.create({
   input: {
     height: 55,
-    width: 360,
     marginTop: 20,
     marginBottom: 20,
     backgroundColor: "#E9E9E9",

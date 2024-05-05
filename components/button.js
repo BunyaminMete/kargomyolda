@@ -17,10 +17,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const SetButton = ({ buttonStyle, buttonText }) => {
+const SetButton = ({ buttonStyle, buttonText, onPress }) => {
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
-      <TouchableOpacity style={[styles.button, buttonStyle]}>
+      <TouchableOpacity style={[styles.button, buttonStyle]} onPress={onPress}>
         <Text style={styles.text}>{buttonText}</Text>
       </TouchableOpacity>
     </View>

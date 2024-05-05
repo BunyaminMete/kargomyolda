@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, ImageBackground } from "react-native";
 
-import splash_logo from "../assets/splashscreenLogo.png";
-import kargoButton from "../assets/kargomyoldaButton.png";
-import kargoText from "../assets/kargomyoldatext2.png";
+import splash_logo from "../../assets/splashscreenLogo.png";
+import kargoButton from "../../assets/kargomyoldaButton.png";
+import kargoText from "../../assets/kargomyoldatext2.png";
 
 export default function App() {
   return (

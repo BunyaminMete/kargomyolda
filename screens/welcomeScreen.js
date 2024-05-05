@@ -5,12 +5,66 @@ import {
   Image,
   Button,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 
 import welcomeLogo from "../assets/kargoBeyazLogo.png";
 import kargomYolda from "../assets/kargomyoldaText_Siyah.png";
 import textUnderlineDesign from "../assets/welcomeScreen_ellipsetasarım.png";
 import seperatorImage from "../assets/viewSeperatorDesign.png";
+import { useState } from "react";
+
+const WelcomeScreen = ({ navigation }) => {
+  const [userRole, setUserRole] = useState("");
+
+  userAuthentication = (role) => {
+    setUserRole(userRole);
+    {
+      role === "musteri"
+        ? navigation.navigate("Login")
+        : role === "kurye"
+        ? navigation.navigate("LoginKurye")
+        : null;
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.welcomeTop}>
+        <Image source={welcomeLogo} style={styles.welcomeLogo} />
+        <Image source={kargomYolda} style={styles.welcomeLogo2} />
+        <Image source={textUnderlineDesign} style={styles.welcomeLogo3} />
+      </View>
+      <Image source={seperatorImage} style={styles.seperator} />
+
+      <View>
+        <View style={styles.welcomeContainer}>
+          <Text style={styles.welcomeInfo}>
+            <Text style={styles.boldText}>Hoş Geldiniz{"\n"}</Text>
+            <Text>Hizmetlerimize erişebilmek için lütfen giriş yapınız.</Text>
+          </Text>
+        </View>
+        <View>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => userAuthentication("musteri")}
+          >
+            <Text style={{ fontSize: 18, color: "white" }}>Müşteri Girişi</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => userAuthentication("kurye")}
+          >
+            <Text style={{ fontSize: 18, color: "white" }}>Kurye Girişi</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
+};
+
+export default WelcomeScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -58,39 +112,3 @@ const styles = StyleSheet.create({
     marginTop: "5%",
   },
 });
-
-const WelcomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.welcomeTop}>
-        <Image source={welcomeLogo} style={styles.welcomeLogo} />
-        <Image source={kargomYolda} style={styles.welcomeLogo2} />
-        <Image source={textUnderlineDesign} style={styles.welcomeLogo3} />
-      </View>
-      <Image source={seperatorImage} style={styles.seperator} />
-
-      <View>
-        <View style={styles.welcomeContainer}>
-          <Text style={styles.welcomeInfo}>
-            <Text style={styles.boldText}>Hoş Geldiniz{"\n"}</Text>
-            <Text>Hizmetlerimize erişebilmek için lütfen giriş yapınız.</Text>
-          </Text>
-        </View>
-        <View>
-          <TouchableOpacity style={styles.button}>
-            <Text style={{ fontSize: 18, color: "white" }}>Müşteri Girişi</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate("Login")}
-          >
-            <Text style={{ fontSize: 18, color: "white" }}>Kurye Girişi</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
-  );
-};
-
-export default WelcomeScreen;

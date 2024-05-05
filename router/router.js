@@ -5,7 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import WelcomeScreen from "../screens/welcomeScreen";
-import UserLoginScreen from "../screens/login";
+import UserLoginScreen from "../screens/loginScreens/login";
+import RegisterMusteri from "../screens/registerScreens/customerRegisterScreen";
+import RegisterKurye from "../screens/registerScreens/courierRegisterScreen";
+import kuryeLoginScreen from "../screens/loginScreens/loginkurye";
+import KuryeBelgeScreen from "../screens/kuryeBelge";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +26,26 @@ const RouteManagement = () => {
           <Stack.Screen
             name="Login"
             component={UserLoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterMusteri}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="RegisterKurye"
+            component={RegisterKurye}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="LoginKurye"
+            component={kuryeLoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BelgeYukle"
+            component={KuryeBelgeScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
