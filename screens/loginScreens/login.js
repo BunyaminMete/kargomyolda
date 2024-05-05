@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet, TextInput } from "react-native";
+import { View, Image, StyleSheet, Text, Alert } from "react-native";
 
 import HeaderArea from "../../components/header";
-
-import AppLogo from "../../assets/kargoMaviLogo.png";
-import KargomYoldaText from "../../assets/kargomyoldaText_Siyah.png";
-import EllipseHighlight from "../../assets/ellipse_gri.png";
 import InputComponent from "../../components/input";
 import CheckBoxComponent from "../../components/checkbox";
 import SetButton from "../../components/button";
 
+import LocalData from "../data.json";
+
+import AppLogo from "../../assets/kargoMaviLogo.png";
+import KargomYoldaText from "../../assets/kargomyoldaText_Siyah.png";
+import EllipseHighlight from "../../assets/ellipse_gri.png";
 import seperatorLogin from "../../assets/hesabinyokmu.png";
 
 const styles = StyleSheet.create({
@@ -42,6 +43,22 @@ const styles = StyleSheet.create({
 
 const UserLoginScreen = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const UserAuthenticator = () => {
+    if (
+      username === LocalData.login[0].username &&
+      password === LocalData.login[0].password
+    ) {
+      setTimeout(() => {
+        Alert.alert("Giriş Başarılı");
+        navigation.navigate("CustomerMain");
+      }, 2000);
+    } else {
+      Alert.alert("Giriş Başarısız");
+    }
+  };
 
   return (
     <>
@@ -69,8 +86,17 @@ const UserLoginScreen = ({ navigation }) => {
         >
           {/* Input Kapsayıcısı */}
           <View>
-            <InputComponent placeholder="E-posta" />
-            <InputComponent placeholder="Parola" uzaklik_ayarla={-10} />
+            <InputComponent
+              placeholder="E-posta"
+              value={username}
+              onChangeUpdateText={(newValue) => setUsername(newValue)}
+            />
+            <InputComponent
+              placeholder="Parola"
+              uzaklik_ayarla={-10}
+              value={password}
+              onChangeUpdateText={(newValue) => setPassword(newValue)}
+            />
             <CheckBoxComponent
               checkboxText="Beni hatırla"
               onValueChange={setChecked}
@@ -80,6 +106,7 @@ const UserLoginScreen = ({ navigation }) => {
           {/* Input Kapsayıcısı */}
           <View>
             <SetButton
+              onPress={UserAuthenticator}
               buttonStyle={{ backgroundColor: "#2AA2E6", marginTop: 40 }}
               buttonText="Giriş Yap"
             />

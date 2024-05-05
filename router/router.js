@@ -10,6 +10,9 @@ import RegisterMusteri from "../screens/registerScreens/customerRegisterScreen";
 import RegisterKurye from "../screens/registerScreens/courierRegisterScreen";
 import kuryeLoginScreen from "../screens/loginScreens/loginkurye";
 import KuryeBelgeScreen from "../screens/kuryeBelge";
+import CustomerMainPageScreen from "../screens/customerPages/customerMainScreen";
+import KargoIlanYayinla from "../screens/customerPages/ilanOlustur";
+import MusteriProfilAyarlari from "../screens/customerPages/customerProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,6 +49,21 @@ const RouteManagement = () => {
           <Stack.Screen
             name="BelgeYukle"
             component={KuryeBelgeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="CustomerMain"
+            component={CustomerMainPageScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="IlanVer"
+            component={KargoIlanYayinla}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MusteriProfil"
+            component={MusteriProfilAyarlari}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
