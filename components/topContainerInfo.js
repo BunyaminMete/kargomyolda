@@ -1,13 +1,17 @@
 import { View, StyleSheet, Image, Text } from "react-native";
 import miniApplogo from "../assets/bluelogo.png";
 
-const InfoContainer = ({ bottomInfoText, welcomeText = "Hoş geldiniz !" }) => {
+const InfoContainer = ({
+  bottomInfoText,
+  welcomeText = "Hoş geldiniz !",
+  containerLogo = miniApplogo,
+}) => {
   return (
     <>
       <View style={styles.topContainer}>
         <View style={styles.subContainer}>
           <View style={styles.innerContainer}>
-            <Image style={styles.miniAppLogo} source={miniApplogo} />
+            <Image style={styles.miniAppLogo} source={containerLogo} />
             <View style={styles.textContainer}>
               <View style={{ alignItems: "center" }}>
                 <Text style={styles.welcomeText}>{welcomeText}</Text>

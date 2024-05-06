@@ -1,13 +1,17 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import profileIcon from "../assets/bottomMenu/profile.png";
 import searchIcon from "../assets/bottomMenu/search.png";
 import cardIcon from "../assets/bottomMenu/creditcard.png";
 
-const MenuContainer = ({ navigation }) => {
+const MenuContainer = ({}) => {
+  const navigation = useNavigation();
+
   const handleProfilePress = () => {
     // Profil sayfasına gitmek için navigasyon işlemi
-    navigation.navigate("Profil");
+    navigation.navigate("MusteriProfil");
   };
 
   const handleSettingsPress = () => {
@@ -15,9 +19,8 @@ const MenuContainer = ({ navigation }) => {
     navigation.navigate("Ayarlar");
   };
 
-  const handleLogoutPress = () => {
-    // Çıkış yapmak için burada logout işlemi yapılabilir
-    // Örneğin: AsyncStorage'ten kullanıcı bilgilerini silme gibi
+  const handlePaymentPress = () => {
+    navigation.navigate("MusteriOdeme");
   };
 
   return (
@@ -25,10 +28,10 @@ const MenuContainer = ({ navigation }) => {
       <TouchableOpacity onPress={handleProfilePress}>
         <Image source={profileIcon} style={styles.iconImages} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleSettingsPress}>
+      <TouchableOpacity>
         <Image source={searchIcon} style={styles.iconImages} />
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handlePaymentPress}>
         <Image source={cardIcon} style={styles.iconImages} />
       </TouchableOpacity>
     </View>

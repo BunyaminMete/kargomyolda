@@ -37,7 +37,7 @@ const CustomerMainPageScreen = ({ navigation }) => {
           ImageSource={returnIcon}
           Title="Geçmiş Kargolar"
           Subtitle="Geçmiş kargo hareketlerini görüntüleyin"
-          onPress={() => navigation.navigate("MusteriProfil")}
+          onPress={() => navigation.navigate("MusteriKargo")}
         />
         <OptionContainer
           ImageSource={FeedBackIcon}
