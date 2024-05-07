@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import HeaderArea from "../../components/header";
+import PackageStatus from "../../components/packageStatus";
 
 const MusteriGecmisKargolar = ({ navigation }) => {
   return (
@@ -12,6 +13,9 @@ const MusteriGecmisKargolar = ({ navigation }) => {
           onPress={() => navigation.navigate("CustomerMain")}
           titleText="Geçmiş Kargolar"
         />
+        <PackageStatus />
+        <PackageStatus />
+        <PackageStatus />
       </View>
     </>
   );
