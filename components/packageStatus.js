@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, TouchableOpacity, StyleSheet, Text } from "react-native";
 import deliveryLogo from "../assets/deliveryPack.png";
 
-const PackageStatus = () => {
+const PackageStatus = ({ onPress }) => {
   return (
     <View style={styles.container}>
       {/* Sol Container */}
@@ -22,7 +22,7 @@ const PackageStatus = () => {
       {/* Sağ Container */}
       <View style={styles.rightContainer}>
         <Text style={styles.priceText}>145.00 $</Text>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={onPress}>
           <Text style={styles.buttonText}>Yolda</Text>
         </TouchableOpacity>
       </View>
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     padding: 10,
     backgroundColor: "#FFC0CB",
+    borderRadius: 10,
   },
   logo: {
     width: 50,
