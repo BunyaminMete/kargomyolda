@@ -1,4 +1,5 @@
 import { Image, TouchableOpacity, View, Text, StyleSheet } from "react-native";
+
 import IconCover from "../assets/locationiconcover.png";
 import IconHome from "../assets/homeicon.png";
 

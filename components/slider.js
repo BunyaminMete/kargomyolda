@@ -22,7 +22,7 @@ const VerticalSlider = ({ children, isVisible, onClose }) => {
 
   const translateY = slideAnimation.interpolate({
     inputRange: [0, 1],
-    outputRange: [200, 0],
+    outputRange: [400, 0],
   });
 
   const handleOverlayPress = () => {
@@ -64,9 +64,9 @@ const styles = StyleSheet.create({
   },
   slider: {
     backgroundColor: "#FFFFFF",
-    marginTop: "80%",
+    marginTop: "70%",
     width: "100%",
-    height: 500,
+    height: 600,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     paddingHorizontal: 20,

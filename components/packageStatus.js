@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Image, TouchableOpacity, StyleSheet, Text } from "react-native";
+
 import deliveryLogo from "../assets/deliveryPack.png";
 
-const PackageStatus = ({ onPress }) => {
+const PackageStatus = ({ onPress, receiver, packageAmount, price }) => {
   return (
     <View style={styles.container}>
       {/* Sol Container */}
@@ -14,14 +15,14 @@ const PackageStatus = ({ onPress }) => {
 
         {/* Bilgi Container */}
         <View style={styles.infoContainer}>
-          <Text style={styles.infoText}>Bü*** Me***</Text>
-          <Text style={styles.infoText}>1 paket</Text>
+          <Text style={styles.infoText}>{receiver}</Text>
+          <Text style={styles.infoText}>{packageAmount} paket</Text>
         </View>
       </View>
 
       {/* Sağ Container */}
       <View style={styles.rightContainer}>
-        <Text style={styles.priceText}>145.00 $</Text>
+        <Text style={styles.priceText}>{price}</Text>
         <TouchableOpacity style={styles.button} onPress={onPress}>
           <Text style={styles.buttonText}>Yolda</Text>
         </TouchableOpacity>

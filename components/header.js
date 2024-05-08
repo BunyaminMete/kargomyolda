@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native";
+
 import Seperator from "../assets/viewSeperatorDesign.png";
 import vector from "../assets/vector.png";
 

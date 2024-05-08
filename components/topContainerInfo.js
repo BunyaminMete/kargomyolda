@@ -1,4 +1,5 @@
 import { View, StyleSheet, Image, Text } from "react-native";
+
 import miniApplogo from "../assets/bluelogo.png";
 
 const InfoContainer = ({

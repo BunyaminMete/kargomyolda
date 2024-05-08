@@ -1,4 +1,5 @@
 import { View, StyleSheet } from "react-native";
+
 import HeaderArea from "../../components/header";
 import InfoContainer from "../../components/topContainerInfo";
 import InputComponent from "../../components/input";

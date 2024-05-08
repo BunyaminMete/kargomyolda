@@ -9,12 +9,10 @@ import {
 } from "react-native";
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
+
 import mapcover from "../assets/mapcover.png";
 
-// const windowWidth = Dimensions.get("window").width;
-// const windowHeight = Dimensions.get("window").height;
-
-const CurrentLocationMapView = ({ setAddress }) => {
+const CurrentLocationMapView = ({ setAddress, userName }) => {
   const [currentLocation, setCurrentLocation] = useState(null);
   const [initialRegion, setInitialRegion] = useState(null);
   //   const [address, setAddress] = useState(null);
@@ -64,6 +62,7 @@ const CurrentLocationMapView = ({ setAddress }) => {
         </MapView>
       )}
       <Image source={mapcover} style={styles.mapCover} resizeMode="cover" />
+      <Text style={styles.user}>Merhaba {userName} !</Text>
     </View>
   );
 };
@@ -82,6 +81,16 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "50%",
     width: "100%",
+  },
+  user: {
+    position: "absolute",
+    top: "80%",
+    left: "55%",
+
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#2AA2E6",
+    letterSpacing: 0.6,
   },
 });
 

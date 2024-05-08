@@ -1,5 +1,6 @@
-import HeaderArea from "../components/header";
 import { View } from "react-native";
+
+import HeaderArea from "../components/header";
 import InfoContainer from "../components/topContainerInfo";
 import DualButtonContainer from "../components/belgeButton";
 import SetButton from "../components/button";

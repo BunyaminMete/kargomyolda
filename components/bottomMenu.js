@@ -24,34 +24,27 @@ const MenuContainer = ({}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={handleProfilePress}>
-        <Image source={profileIcon} style={styles.iconImages} />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Image source={searchIcon} style={styles.iconImages} />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handlePaymentPress}>
-        <Image source={cardIcon} style={styles.iconImages} />
-      </TouchableOpacity>
+    <View style={styles.menuContainer}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleProfilePress}>
+          <Image source={profileIcon} style={styles.iconImages} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Image source={searchIcon} style={styles.iconImages} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handlePaymentPress}>
+          <Image source={cardIcon} style={styles.iconImages} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: 60,
+  menuContainer: {
     width: "100%",
-    backgroundColor: "white",
     marginTop: 30,
-    height: 90,
-
-    //container üst kısmı border tasarımı
-    borderTopWidth: 1,
-    borderTopColor: "#ccc",
+    backgroundColor: "white",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -60,6 +53,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.53,
     shadowRadius: 13.97,
     elevation: 21,
+    zIndex: 999, // Menünün diğer içeriklerin üzerinde olmasını sağlar
+  },
+  container: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 60,
+    height: 90,
+
+    //container üst kısmı border tasarımı
+    borderTopWidth: 1,
+    borderTopColor: "#ccc",
   },
 
   iconImages: {

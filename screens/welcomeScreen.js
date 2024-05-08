@@ -1,18 +1,10 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Button,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useState } from "react";
 
 import welcomeLogo from "../assets/kargoBeyazLogo.png";
 import kargomYolda from "../assets/kargomyoldaText_Siyah.png";
 import textUnderlineDesign from "../assets/welcomeScreen_ellipsetasarım.png";
 import seperatorImage from "../assets/viewSeperatorDesign.png";
-import { useState } from "react";
 
 const WelcomeScreen = ({ navigation }) => {
   const [userRole, setUserRole] = useState("");

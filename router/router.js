@@ -15,6 +15,8 @@ import KargoIlanYayinla from "../screens/customerPages/ilanOlustur";
 import MusteriProfilAyarlari from "../screens/customerPages/customerProfile";
 import CustomerCardDetails from "../screens/customerPages/customerCardDetails";
 import MusteriGecmisKargolar from "../screens/customerPages/cargoHistory";
+import FeedbackScreen from "../screens/customerPages/feedbackScreen";
+import CourierMainPageScreen from "../screens/courierPages/courierMainPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +78,16 @@ const RouteManagement = () => {
           <Stack.Screen
             name="MusteriKargo"
             component={MusteriGecmisKargolar}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MusteriGeriBildirim"
+            component={FeedbackScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="KuryeMain"
+            component={CourierMainPageScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

@@ -1,12 +1,14 @@
 import React from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
+import KargoInfoPairs from "./kargoDetayPair";
+
 import deliveryLogo from "../assets/deliveryPack.png";
 import closeIcon from "../assets/closeIcon.png";
-import PackageInput from "./kargoInput";
 
 const PackageMoreInfo = ({ onPress }) => {
   return (
     <View>
+      {/* Slider sayfasının logo, başlık ve iconun bulunduğu kısım */}
       <View style={styles.container}>
         {/* Sol Container */}
         <View style={styles.leftContainer}>
@@ -27,13 +29,23 @@ const PackageMoreInfo = ({ onPress }) => {
           </View>
         </View>
       </View>
+      {/*  */}
       <View style={{ marginTop: 20 }}>
-        <PackageInput leftTitle="Alıcı" />
-        <PackageInput leftTitle="Gönderi Sahibi" />
-        <PackageInput leftTitle="Teslimat Adresi" />
-        <PackageInput leftTitle="Teslimat Tarihi" />
-        <PackageInput leftTitle="Teslimat Saati" />
-        <PackageInput leftTitle="Kargo Detayları" />
+        <KargoInfoPairs leftTitle="Alıcı" rightTitle="Bünyamin Mete" />
+        <KargoInfoPairs leftTitle="Gönderi Sahibi" rightTitle="Bilal Eser" />
+        <KargoInfoPairs
+          leftTitle="Teslimat Adresi"
+          rightTitle="Bahçelievler/İstanbul"
+        />
+        <KargoInfoPairs leftTitle="Teslimat Tarihi" rightTitle="27.04.24" />
+        <KargoInfoPairs leftTitle="Teslimat Saati" rightTitle="19.15" />
+        <KargoInfoPairs
+          leftTitle="Kargo Detayları"
+          rightTitle="Ağırlık: 0.5 kg
+                      Uzunluk: 0.35 m
+                      Genişlik 0.25 m
+                      Derinlik 0.25 m"
+        />
       </View>
     </View>
   );

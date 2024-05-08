@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Image, StyleSheet, Text, Alert } from "react-native";
+import { View, Image, StyleSheet, Alert } from "react-native";
 
 import HeaderArea from "../../components/header";
 import InputComponent from "../../components/input";

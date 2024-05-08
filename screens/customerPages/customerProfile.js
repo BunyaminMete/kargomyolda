@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 import HeaderArea from "../../components/header";
-import InfoContainer from "../../components/topContainerInfo";
 import SetButton from "../../components/button";
-import profil from "../../assets/profilephoto.png";
 import InputComponent from "../../components/input";
+
+import profil from "../../assets/profilephoto.png";
 
 const MusteriProfilAyarlari = ({ navigation }) => {
   return (

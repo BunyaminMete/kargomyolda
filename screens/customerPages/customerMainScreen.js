@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 
 import CurrentLocationMapView from "../../components/currentLocation";
 import HeaderArea from "../../components/header";
@@ -26,7 +26,7 @@ const CustomerMainPageScreen = ({ navigation }) => {
 
         {/* CurrentLocationMapView propsunu global state olmadan locationinfo componentine aktararak adres bilgisini ekrana basma işlemi */}
         <LocationInfo address={address} />
-        <CurrentLocationMapView setAddress={setAddress} />
+        <CurrentLocationMapView setAddress={setAddress} userName="Bünyamin" />
         <OptionContainer
           ImageSource={AddIcon}
           Title="Kargo İlanı Ver"
@@ -43,6 +43,7 @@ const CustomerMainPageScreen = ({ navigation }) => {
           ImageSource={FeedBackIcon}
           Title="Geri Bildirim"
           Subtitle="Deneyimlerinizle alakalı geri bildirimde bulunun"
+          onPress={() => navigation.navigate("MusteriGeriBildirim")}
         />
         <MenuContainer />
       </View>

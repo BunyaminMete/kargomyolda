@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet, TextInput } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 
 import HeaderArea from "../../components/header";
 
-import AppLogo from "../../assets/kargoMaviLogo.png";
-import KargomYoldaText from "../../assets/kargomyoldaText_Siyah.png";
-import EllipseHighlight from "../../assets/ellipse_gri.png";
 import InputComponent from "../../components/input";
 import CheckBoxComponent from "../../components/checkbox";
 import SetButton from "../../components/button";
 
+import AppLogo from "../../assets/kargoMaviLogo.png";
+import KargomYoldaText from "../../assets/kargomyoldaText_Siyah.png";
+import EllipseHighlight from "../../assets/ellipse_gri.png";
 import seperatorLogin from "../../assets/hesabinyokmu.png";
 
 const styles = StyleSheet.create({
@@ -82,6 +82,7 @@ const KuryeLoginScreen = ({ navigation }) => {
             <SetButton
               buttonStyle={{ backgroundColor: "#2AA2E6", marginTop: 40 }}
               buttonText="Giriş Yap"
+              onPress={() => navigation.navigate("KuryeMain")}
             />
             <Image style={styles.seperator} source={seperatorLogin}></Image>
             <SetButton

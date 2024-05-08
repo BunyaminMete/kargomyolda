@@ -1,9 +1,11 @@
 import { View } from "react-native";
+
 import InfoContainer from "../../components/topContainerInfo";
-import creditCard from "../../assets/creditcardlogo.png";
 import HeaderArea from "../../components/header";
 import InputComponent from "../../components/input";
 import SetButton from "../../components/button";
+
+import creditCard from "../../assets/creditcardlogo.png";
 
 const CustomerCardDetails = ({ navigation }) => {
   return (

@@ -1,4 +1,5 @@
 import { View, StyleSheet } from "react-native";
+
 import SetButton from "../../components/button";
 import CheckBoxComponent from "../../components/checkbox";
 import HeaderArea from "../../components/header";
