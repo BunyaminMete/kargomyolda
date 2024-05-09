@@ -3,7 +3,13 @@ import { View, Image, TouchableOpacity, StyleSheet, Text } from "react-native";
 
 import deliveryLogo from "../assets/deliveryPack.png";
 
-const PackageStatus = ({ onPress, receiver, packageAmount, price }) => {
+const PackageStatus = ({
+  onPress,
+  receiver,
+  packageAmount,
+  price,
+  kuryePrice,
+}) => {
   return (
     <View style={styles.container}>
       {/* Sol Container */}
@@ -16,16 +22,23 @@ const PackageStatus = ({ onPress, receiver, packageAmount, price }) => {
         {/* Bilgi Container */}
         <View style={styles.infoContainer}>
           <Text style={styles.infoText}>{receiver}</Text>
-          <Text style={styles.infoText}>{packageAmount} paket</Text>
+          {packageAmount && (
+            <Text style={styles.infoText}>{packageAmount} paket</Text>
+          )}
+          {kuryePrice && (
+            <Text style={styles.infoText}>Ücret : {kuryePrice} TL</Text>
+          )}
         </View>
       </View>
 
       {/* Sağ Container */}
       <View style={styles.rightContainer}>
         <Text style={styles.priceText}>{price}</Text>
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-          <Text style={styles.buttonText}>Yolda</Text>
-        </TouchableOpacity>
+        {packageAmount && (
+          <TouchableOpacity style={styles.button} onPress={onPress}>
+            <Text style={styles.buttonText}>Yolda</Text>
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
@@ -56,7 +69,7 @@ const styles = StyleSheet.create({
     height: 50,
   },
   infoContainer: {
-    marginLeft: 10,
+    marginLeft: 20,
   },
   infoText: {
     fontSize: 14,

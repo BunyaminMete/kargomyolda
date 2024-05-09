@@ -17,6 +17,7 @@ import CustomerCardDetails from "../screens/customerPages/customerCardDetails";
 import MusteriGecmisKargolar from "../screens/customerPages/cargoHistory";
 import FeedbackScreen from "../screens/customerPages/feedbackScreen";
 import CourierMainPageScreen from "../screens/courierPages/courierMainPage";
+import packageMoreDetails from "../components/courierMoreDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -88,6 +89,11 @@ const RouteManagement = () => {
           <Stack.Screen
             name="KuryeMain"
             component={CourierMainPageScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="PackageDetails"
+            component={packageMoreDetails}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

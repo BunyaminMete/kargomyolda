@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 
 import CurrentLocationMapView from "../../components/currentLocation";
 import HeaderArea from "../../components/header";
@@ -53,7 +53,12 @@ const CourierMainPageScreen = ({ navigation }) => {
         <Text style={{ fontSize: 26, fontWeight: "bold", marginLeft: 20 }}>
           Yakınındaki Paketler
         </Text>
-        <ProductList packageInfo={nearbyPackages} packagePrice={45} />
+        <ProductList
+          packageInfo={nearbyPackages}
+          packagePrice={45}
+          navigateTo={() => navigation.navigate("PackageDetails")}
+        />
+
         <Text
           style={{
             fontSize: 26,

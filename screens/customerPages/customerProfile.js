@@ -1,12 +1,14 @@
 import React from "react";
 import { View, StyleSheet, Image, TouchableOpacity, Text } from "react-native";
 import HeaderArea from "../../components/header";
+import InfoContainer from "../../components/topContainerInfo";
 import SetButton from "../../components/button";
-import InputComponent from "../../components/input";
-
 import profil from "../../assets/profilephoto.png";
+import InputComponent from "../../components/input";
+import { useNavigation } from "@react-navigation/native";
 
-const MusteriProfilAyarlari = ({ navigation }) => {
+const MusteriProfilAyarlari = ({}) => {
+  const navigation = useNavigation();
   return (
     <>
       <View>
@@ -14,7 +16,7 @@ const MusteriProfilAyarlari = ({ navigation }) => {
           height={150}
           turnBack={true}
           onPress={() => navigation.navigate("CustomerMain")}
-          titleText="Profil Düzenle"
+          titleText="Geçmiş Kargolar"
         />
         <View style={styles.container}>
           <Image source={profil} style={styles.image} />
@@ -23,25 +25,25 @@ const MusteriProfilAyarlari = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.rowButtons}>
-          <View style={{ marginRight: 40 }}>
-            <InputComponent placeholder="Ad" width={160} uzaklik_ayarla={30} />
+          <View style={{ marginRight: 25 }}>
+            <InputComponent placeholder="Alıcı İlçe" width={160} />
           </View>
-          <InputComponent placeholder="Soyad" width={160} uzaklik_ayarla={30} />
+          <InputComponent placeholder="Alıcı Mahalle" width={160} />
         </View>
         <View style={styles.rowButtons}>
-          <View style={{ marginRight: 40 }}>
-            <InputComponent placeholder="Parola" width={160} />
+          <View style={{ marginRight: 25 }}>
+            <InputComponent placeholder="Alıcı İlçe" width={160} />
           </View>
-          <InputComponent placeholder="Parola" width={160} />
+          <InputComponent placeholder="Alıcı Mahalle" width={160} />
         </View>
         <View style={{ marginTop: -10 }}>
-          <InputComponent placeholder="Cep Telefonu" />
+          <InputComponent placeholder="Alıcı Mahalle" />
         </View>
         <View style={{ marginTop: -10 }}>
-          <InputComponent placeholder="E-posta" />
+          <InputComponent placeholder="Alıcı Mahalle" />
         </View>
         <View style={{ marginTop: -10 }}>
-          <InputComponent placeholder="Adres" />
+          <InputComponent placeholder="Alıcı Mahalle" />
         </View>
         <View style={{ marginTop: 30 }}>
           <SetButton
