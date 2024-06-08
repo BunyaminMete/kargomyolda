@@ -1,5 +1,10 @@
 import React from "react";
 import { View, Image, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native"; // navigation importu
+
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
 
 import Seperator from "../assets/viewSeperatorDesign.png";
 import vector from "../assets/vector.png";
@@ -24,12 +29,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    top: "60%",
+    top: "65%",
     left: "36%",
   },
   kargomyolda: {
     width: 110,
     height: 30,
+    top: 5,
   },
   titleContainer: {
     width: "100%",
@@ -58,6 +64,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  logoutButton: {
+    fontSize: 14,
+    padding: 7,
+    color: "black",
+  },
+  logoutContainer: {
+    borderRadius: 20,
+    backgroundColor: "white",
+    width: 70,
+  },
+  logoutContainerr: {
+    borderRadius: 20,
+    backgroundColor: "white",
+    width: 70,
+    right: -150,
+    top: -20,
+  },
 });
 
 const HeaderArea = ({
@@ -69,6 +92,24 @@ const HeaderArea = ({
   titleText,
 }) => {
   const headerStyle = { ...styles.header, backgroundColor, height };
+
+  const navigation = useNavigation(); // navigation hook
+
+  const handleLogout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        // Oturumu kapatıldı, gerektiğinde kullanıcıyı yönlendirin veya başka bir işlem yapın
+        console.log("Kullanıcı başarıyla çıkış yaptı.");
+        // Örneğin, kullanıcıyı ana sayfaya yönlendirebilirsiniz
+        navigation.navigate("Login");
+      })
+      .catch((error) => {
+        console.error("Kullanıcı çıkış yaparken bir hata oluştu:", error);
+      });
+  };
+
   return (
     <View>
       <View style={headerStyle}>
@@ -79,6 +120,14 @@ const HeaderArea = ({
               style={styles.kargomyolda}
               resizeMode="contain"
             />
+            <View style={styles.logoutContainerr}>
+              <TouchableOpacity
+                style={styles.logoutContainer}
+                onPress={handleLogout}
+              >
+                <Text style={styles.logoutButton}>Çıkış Yap</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
         {turnBack && (

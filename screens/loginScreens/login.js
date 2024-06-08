@@ -1,5 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image, StyleSheet, Alert } from "react-native";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth"; // onAuthStateChanged ekledik
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
 import HeaderArea from "../../components/header";
 import InputComponent from "../../components/input";
@@ -43,20 +50,32 @@ const styles = StyleSheet.create({
 
 const UserLoginScreen = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null); // Oturum durumu için state
 
-  const UserAuthenticator = () => {
-    if (
-      username === LocalData.login[0].username &&
-      password === LocalData.login[0].password
-    ) {
-      setTimeout(() => {
-        Alert.alert("Giriş Başarılı");
-        navigation.navigate("CustomerMain");
-      }, 2000);
-    } else {
-      Alert.alert("Giriş Başarısız");
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
+      setUser(user); // Oturum durumunu güncelle
+    });
+
+    // Component kaldırıldığında listener'ı kaldır
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    // Oturum açık olduğunda direkt ana ekrana yönlendirme
+    if (user) {
+      navigation.navigate("CustomerMain");
+    }
+  }, [user, navigation]);
+
+  const UserAuthenticator = async () => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      // Oturum açma başarılı olduğunda onAuthStateChanged tarafından set edilecek
+    } catch (error) {
+      Alert.alert(error.message);
     }
   };
 
@@ -88,14 +107,14 @@ const UserLoginScreen = ({ navigation }) => {
           <View>
             <InputComponent
               placeholder="E-posta"
-              value={username}
-              onChangeUpdateText={(newValue) => setUsername(newValue)}
+              value={email}
+              onChangeText={(newValue) => setEmail(newValue)}
             />
             <InputComponent
               placeholder="Parola"
               uzaklik_ayarla={-10}
               value={password}
-              onChangeUpdateText={(newValue) => setPassword(newValue)}
+              onChangeText={(newValue) => setPassword(newValue)}
             />
             <CheckBoxComponent
               checkboxText="Beni hatırla"

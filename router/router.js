@@ -18,9 +18,27 @@ import MusteriGecmisKargolar from "../screens/customerPages/cargoHistory";
 import FeedbackScreen from "../screens/customerPages/feedbackScreen";
 import CourierMainPageScreen from "../screens/courierPages/courierMainPage";
 
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+
 const Stack = createNativeStackNavigator();
 
 const RouteManagement = () => {
+  const firebaseConfig = {
+    apiKey: "AIzaSyAULHOWF7klBKJBq_fGGXtCdEaNM-solmo",
+    authDomain: "kargomyolda.firebaseapp.com",
+    databaseURL:
+      "https://kargomyolda-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "kargomyolda",
+    storageBucket: "kargomyolda.appspot.com",
+    messagingSenderId: "76046646433",
+    appId: "1:76046646433:web:73df110ef1e1f53ad944e0",
+    measurementId: "G-DQV9MXGN9R",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
   return (
     <>
       <NavigationContainer>
@@ -58,7 +76,7 @@ const RouteManagement = () => {
           <Stack.Screen
             name="CustomerMain"
             component={CustomerMainPageScreen}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, gestureEnabled: false }}
           />
           <Stack.Screen
             name="IlanVer"
@@ -88,7 +106,7 @@ const RouteManagement = () => {
           <Stack.Screen
             name="KuryeMain"
             component={CourierMainPageScreen}
-            options={{ headerShown: false }}
+            options={{ headerShown: false, gestureEnabled: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>

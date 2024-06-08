@@ -5,7 +5,7 @@ const defaultWidth = 360;
 const InputComponent = ({
   placeholder,
   value,
-  onChangeUpdateText,
+  onChangeText,
   uzaklik_ayarla,
   width = defaultWidth,
 }) => {
@@ -22,7 +22,7 @@ const InputComponent = ({
           style={[styles.input, { width: width }]}
           placeholder={placeholder}
           value={value}
-          onChangeText={onChangeUpdateText}
+          onChangeText={onChangeText}
         />
       </View>
     </>

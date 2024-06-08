@@ -1,5 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Image, StyleSheet } from "react-native";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth"; // onAuthStateChanged ekledik
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 
 import HeaderArea from "../../components/header";
 
@@ -42,6 +50,34 @@ const styles = StyleSheet.create({
 
 const KuryeLoginScreen = ({ navigation }) => {
   const [isChecked, setChecked] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, setUser] = useState(null); // Oturum durumu için state
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(getAuth(), (user) => {
+      setUser(user); // Oturum durumunu güncelle
+    });
+
+    // Component kaldırıldığında listener'ı kaldır
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    // Oturum açık olduğunda direkt ana ekrana yönlendirme
+    if (user) {
+      navigation.navigate("KuryeMain");
+    }
+  }, [user, navigation]);
+
+  const UserAuthenticator = async () => {
+    try {
+      await firebase.auth().signInWithEmailAndPassword(email, password);
+      // Oturum açma başarılı olduğunda onAuthStateChanged tarafından set edilecek
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
 
   return (
     <>
@@ -69,8 +105,17 @@ const KuryeLoginScreen = ({ navigation }) => {
         >
           {/* Input Kapsayıcısı */}
           <View>
-            <InputComponent placeholder="E-posta" />
-            <InputComponent placeholder="Parola" uzaklik_ayarla={-10} />
+            <InputComponent
+              placeholder="E-posta"
+              value={email}
+              onChangeText={(newValue) => setEmail(newValue)}
+            />
+            <InputComponent
+              placeholder="Parola"
+              uzaklik_ayarla={-10}
+              value={password}
+              onChangeText={(newValue) => setPassword(newValue)}
+            />
             <CheckBoxComponent
               checkboxText="Beni hatırla"
               onValueChange={setChecked}
@@ -82,7 +127,7 @@ const KuryeLoginScreen = ({ navigation }) => {
             <SetButton
               buttonStyle={{ backgroundColor: "#2AA2E6", marginTop: 40 }}
               buttonText="Giriş Yap"
-              onPress={() => navigation.navigate("KuryeMain")}
+              onPress={UserAuthenticator}
             />
             <Image style={styles.seperator} source={seperatorLogin}></Image>
             <SetButton
