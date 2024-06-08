@@ -7,13 +7,17 @@ import {
   StyleSheet,
 } from "react-native";
 
-const ProductList = ({ packageInfo, packagePrice }) => {
+const ProductList = ({ navigateTo, packageInfo, packagePrice }) => {
   // Kargo paketlerini temsil eden dizi
 
   return (
     <ScrollView horizontal style={styles.container}>
       {packageInfo.map((item, index) => (
-        <View key={index} style={styles.productContainer}>
+        <TouchableOpacity
+          onPress={navigateTo}
+          key={index}
+          style={styles.productContainer}
+        >
           {Object.entries(item).map(([key, value]) => (
             <View key={key} style={styles.infoContainer}>
               <Text style={styles.productName}>{key}</Text>
@@ -29,7 +33,7 @@ const ProductList = ({ packageInfo, packagePrice }) => {
               </TouchableOpacity>
             </View>
           )}
-        </View>
+        </TouchableOpacity>
       ))}
     </ScrollView>
   );
