@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// Firebase Authentication ile ilgili işlemleri yapabilirsiniz
+// Firebase Authentication ile ilgili işlemleri yapabilirsinizs
 const auth = firebase.auth();
 
 const setupAuthStateChanged = (callback) => {
