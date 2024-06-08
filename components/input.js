@@ -7,6 +7,7 @@ const InputComponent = ({
   value,
   onChangeText,
   uzaklik_ayarla,
+  isRequired,
   width = defaultWidth,
 }) => {
   return (
@@ -23,6 +24,7 @@ const InputComponent = ({
           placeholder={placeholder}
           value={value}
           onChangeText={onChangeText}
+          placeholderTextColor={isRequired && !value ? "gray" : "gray"} // Zorunlu alan boşsa placeholder rengini kırmızı yap
         />
       </View>
     </>

@@ -16,7 +16,7 @@ const MusteriProfilAyarlari = ({}) => {
           height={150}
           turnBack={true}
           onPress={() => navigation.navigate("CustomerMain")}
-          titleText="Geçmiş Kargolar"
+          titleText="Profilini Düzenle"
         />
         <View style={styles.container}>
           <Image source={profil} style={styles.image} />
@@ -25,25 +25,25 @@ const MusteriProfilAyarlari = ({}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.rowButtons}>
-          <View style={{ marginRight: 25 }}>
-            <InputComponent placeholder="Alıcı İlçe" width={160} />
+          <View style={{ marginRight: 40 }}>
+            <InputComponent placeholder="Ad" width={160} />
           </View>
-          <InputComponent placeholder="Alıcı Mahalle" width={160} />
+          <InputComponent placeholder="Soyad" width={160} />
         </View>
         <View style={styles.rowButtons}>
-          <View style={{ marginRight: 25 }}>
-            <InputComponent placeholder="Alıcı İlçe" width={160} />
+          <View style={{ marginRight: 40 }}>
+            <InputComponent placeholder="Parola" width={160} />
           </View>
-          <InputComponent placeholder="Alıcı Mahalle" width={160} />
+          <InputComponent placeholder="Parola" width={160} />
         </View>
         <View style={{ marginTop: -10 }}>
-          <InputComponent placeholder="Alıcı Mahalle" />
+          <InputComponent placeholder="Cep Telefonu" />
         </View>
         <View style={{ marginTop: -10 }}>
-          <InputComponent placeholder="Alıcı Mahalle" />
+          <InputComponent placeholder="E-posta" />
         </View>
         <View style={{ marginTop: -10 }}>
-          <InputComponent placeholder="Alıcı Mahalle" />
+          <InputComponent placeholder="Adres" />
         </View>
         <View style={{ marginTop: 30 }}>
           <SetButton

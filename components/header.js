@@ -103,7 +103,7 @@ const HeaderArea = ({
         // Oturumu kapatıldı, gerektiğinde kullanıcıyı yönlendirin veya başka bir işlem yapın
         console.log("Kullanıcı başarıyla çıkış yaptı.");
         // Örneğin, kullanıcıyı ana sayfaya yönlendirebilirsiniz
-        navigation.navigate("Login");
+        navigation.navigate("Welcome");
       })
       .catch((error) => {
         console.error("Kullanıcı çıkış yaparken bir hata oluştu:", error);

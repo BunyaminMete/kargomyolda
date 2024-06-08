@@ -1,46 +1,107 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   ScrollView,
   Text,
   TouchableOpacity,
   StyleSheet,
+  Alert,
 } from "react-native";
 
-const ProductList = ({ navigateTo, packageInfo, packagePrice }) => {
-  // Kargo paketlerini temsil eden dizi
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+
+const ProductList = ({ packageInfo, showButton }) => {
+  const calculateShippingCost = (weight, width, height, depth) => {
+    const shippingCost = (weight * (width + height + depth)) / 800; // Kargo ücreti hesaplama formülü
+    return shippingCost;
+  };
+
+  const getRandomDistance = () => {
+    const randomValue = Math.random(); // 0 ile 1 arasında bir değer
+    const integerPart = Math.floor(randomValue * 10); // 0 ile 9 arasında bir tam sayı
+    const decimalPart = Math.random() > 0.5 ? 0.5 : 0; // 0 veya 0.5 olacak şekilde ayarla
+    return integerPart + decimalPart;
+  };
+
+  const handleAddToCart = async (item) => {
+    try {
+      // İlk olarak, mevcut dokümanı pastShipments koleksiyonuna ekle
+      await firebase
+        .firestore()
+        .collection("pastShipments")
+        .doc(item.id)
+        .set({
+          ...item,
+        });
+
+      // Ardından, shipments koleksiyonundan sil
+      await firebase.firestore().collection("shipments").doc(item.id).delete();
+
+      Alert.alert("Başarılı", "Kargo geçmişe taşındı!");
+    } catch (error) {
+      console.error("Error moving shipment to pastShipments:", error);
+      Alert.alert("Hata", "Kargo geçmişe taşınırken bir hata oluştu.");
+    }
+  };
 
   return (
     <ScrollView horizontal style={styles.container}>
       {packageInfo.map((item, index) => (
-        <TouchableOpacity
-          onPress={navigateTo}
-          key={index}
-          style={styles.productContainer}
-        >
-          {Object.entries(item).map(([key, value]) => (
-            <View key={key} style={styles.infoContainer}>
-              <Text style={styles.productName}>{key}</Text>
-              <Text style={styles.productValue}>{value}</Text>
-            </View>
-          ))}
-          {/* Sepete Ekle butonu */}
-          {packagePrice && (
+        <View key={index} style={styles.productContainer}>
+          <View style={styles.infoContainer}>
+            <Text style={styles.label}>Sana Olan Uzaklık: </Text>
+            <Text style={styles.productValue}>{getRandomDistance()} km</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.label}>Taşınacak Mesafe: </Text>
+            <Text style={styles.productValue}>{getRandomDistance()} km</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.label}>Ağırlık: </Text>
+            <Text style={styles.productValue}>{item.weight} kg</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.label}>Genişlik: </Text>
+            <Text style={styles.productValue}>{item.width} m</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.label}>Uzunluk: </Text>
+            <Text style={styles.productValue}>{item.length} m</Text>
+          </View>
+          <View style={styles.infoContainer}>
+            <Text style={styles.label}>Derinlik: </Text>
+            <Text style={styles.productValue}>{item.depth} m</Text>
+          </View>
+
+          {showButton && (
             <View style={styles.infoContainer}>
-              <Text style={styles.productPrice}>{packagePrice} TL</Text>
-              <TouchableOpacity style={styles.addToCartButton}>
-                <Text style={styles.buttonText}>Sepete Ekle</Text>
+              <Text style={styles.productPrice}>
+                {calculateShippingCost(
+                  item.weight * 1000,
+                  item.width * 10,
+                  item.length * 10,
+                  item.depth * 10
+                )}
+                TL
+              </Text>
+              <TouchableOpacity
+                style={styles.addToCartButton}
+                onPress={() => handleAddToCart(item)}
+              >
+                <Text style={styles.buttonText}>Paketi Al</Text>
               </TouchableOpacity>
             </View>
           )}
-        </TouchableOpacity>
+        </View>
       ))}
     </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row", // Yatay yönde sıralama
+    flexDirection: "row",
     marginTop: 5,
   },
   productContainer: {
@@ -50,7 +111,7 @@ const styles = StyleSheet.create({
     margin: 20,
     borderRadius: 10,
     padding: 10,
-    justifyContent: "space-between", // İçerikleri dikey olarak hizalamak için
+    justifyContent: "space-between",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -66,11 +127,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 5,
   },
-  productName: {
-    fontWeight: "700",
-    fontSize: 12,
+  label: {
+    fontWeight: "bold",
+    fontSize: 14,
   },
-  productValue: { fontWeight: "bold" },
+  productValue: {
+    fontSize: 14,
+  },
   addToCartButton: {
     backgroundColor: "#2AA2E6",
     borderRadius: 5,
@@ -80,7 +143,7 @@ const styles = StyleSheet.create({
   },
   productPrice: {
     fontWeight: "900",
-    fontSize: 18,
+    fontSize: 13,
     color: "#2AA2E6",
   },
   buttonText: {
